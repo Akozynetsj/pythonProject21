@@ -1,46 +1,40 @@
-class InvalidUsernameError(Exception):
-    def __init__(self, username):
-        self.username = username
-class InvalidSymbolError(Exception):
-    def __init__(self, username):
-        self.username = username
-class InvalidWordError(Exception):
-    def __init__(self, username):
-        self.username = username
-def register_user(username):
-    if username == "gitler":
-        raise InvalidWordError(username)
-    elif username == "ziga":
-        raise InvalidWordError(username)
-    elif len(username) < 5:
-        raise InvalidUsernameError(username)
-    for i in username:
-        if i == "!":
-            raise InvalidSymbolError(username)
-        elif i == "?":
-            raise InvalidSymbolError(username)
-        elif i == ".":
-            raise InvalidSymbolError(username)
-        elif i == ",":
-            raise InvalidSymbolError(username)
-        elif i == "@":
-            raise InvalidSymbolError(username)
-        elif i == "#":
-            raise InvalidSymbolError(username)
-        elif i == ";":
-            raise InvalidSymbolError(username)
+#2
+class InvalidPasswordError(Exception):
+    def __init__(self, password):
+        self.password = password
+class InvalidPasswordNumberError(Exception):
+    def __init__(self, password):
+        self.password = password
+def valide_password(password):
+    if len(password) < 8:
+        raise InvalidPasswordError(password)
+    for i in password:
+        if i != 1:
+            raise InvalidPasswordNumberError(password)
+        if i != 2:
+            raise InvalidPasswordNumberError(password)
+        if i != 3:
+            raise InvalidPasswordNumberError(password)
+        if i != 4:
+            raise InvalidPasswordNumberError(password)
+        if i != 5:
+            raise InvalidPasswordNumberError(password)
+        if i != 6:
+            raise InvalidPasswordNumberError(password)
+        if i != 7:
+            raise InvalidPasswordNumberError(password)
+        if i != 8:
+            raise InvalidPasswordNumberError(password)
+        if i != 9:
+            raise InvalidPasswordNumberError(password)
+        if i != 0:
+            raise InvalidPasswordNumberError(password)
     else:
-        print("Вас зареєстровано")
+        print("Пароль прийнято")
 
 try:
-    username = input("Введіть ім'я користувача: ")
-    register_user(username)
-except InvalidUsernameError as a:
-    print(f"Неправильне ім'я користувача {a.username} \n"
-          f"Треба мініімум 5 символів")
-except InvalidSymbolError as b:
-    print(f"Неправильне ім'я користувача {b.username} \n"
-          f"Ім'я не має містити @ # ! ; ? , .")
-except InvalidWordError as c:
-    print(f"Неправильне ім'я користувача {c.username} \n"
-          f"Треба адекватне ім'я")
+    password = input("Введіть пароль: ")
+    valide_password(password)
+except InvalidPasswordError as a:
+    print(f"Неправильний пароль {a.password} \n"
+          f"Треба мінімум 8 символів")
